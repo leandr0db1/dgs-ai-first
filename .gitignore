@@ -14,5 +14,6 @@ __pycache__/
 .cache/
 
 # Node.js (query-endpoint)
+# Node.js (query-endpoint - Exercício 2.2)
 node_modules/
 dist/
