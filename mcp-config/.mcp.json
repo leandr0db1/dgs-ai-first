@@ -1,0 +1,45 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e", "GITHUB_TOOLSETS=repos,pull_requests,issues,code_security",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PAT_NOVATECH_ASSISTANT}"
+      },
+      "_comment": "PAT fine-grained, escopado só a db1/novatech-assistant. Sem escopo de administração nem merge direto na main."
+    },
+    "azure-devops": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@azure-devops/mcp", "${AZURE_DEVOPS_ORG}"],
+      "env": {
+        "AZURE_DEVOPS_PAT": "${AZURE_DEVOPS_PAT}"
+      },
+      "_comment": "Acesso de leitura/escrita a work items do board do projeto. Sem permissão sobre configuração de pipelines de CI/CD."
+    },
+    "azure": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@azure/mcp@latest", "server", "start", "--services", "search"],
+      "env": {
+        "AZURE_SEARCH_ENDPOINT": "${AZURE_SEARCH_ENDPOINT_DEV}",
+        "AZURE_SEARCH_API_KEY": "${AZURE_SEARCH_QUERY_KEY_DEV}"
+      },
+      "_comment": "Chave query-only do índice de DEV/homologação. Nunca a chave admin nem o índice de produção. Usado só para testar retrieval durante o desenvolvimento do query endpoint."
+    },
+    "confluence-novatech": {
+      "type": "sse",
+      "url": "https://mcp.atlassian.com/v1/sse",
+      "headers": {
+        "Authorization": "Bearer ${CONFLUENCE_NOVATECH_READONLY_TOKEN}"
+      },
+      "_comment": "Token read-only, escopado só aos espacos de documentacao do projeto NovaTech. Sem tools de escrita habilitadas."
+    }
+  }
+}
