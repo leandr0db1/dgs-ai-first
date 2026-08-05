@@ -55,9 +55,9 @@
 |---|---|---|---|
 | 1 | 0.713 | FAQ-atendimento | Item 15 — "Cliente diz que é Platinum. Existe esse tier?" |
 | 2 | 0.550 | SLA-2024-tabela-sla-clientes | 1. Classificação de clientes |
-| 3 | 0.482 | SLA-2024-tabela-sla-clientes |  |
-| 4 | 0.396 | SLA-2024-tabela-sla-clientes | 5. Medição e reportes |
-| 5 | 0.395 | PROC-042-v2-frete-especial-revisado |  |
+| 3 | 0.396 | SLA-2024-tabela-sla-clientes | 5. Medição e reportes |
+| 4 | 0.384 | SLA-2024-tabela-sla-clientes | 2. Tabela de SLAs |
+| 5 | 0.374 | FAQ-atendimento | Item 41 — "Qual a diferença entre SLA de resposta e SLA de resolução?" |
 
 **Gabarito (Anexo B):**
 - SLA-2024-tabela-sla-clientes / "1. Classificação" -> OK recuperado
