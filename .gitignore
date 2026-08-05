@@ -12,3 +12,7 @@ __pycache__/
 
 # Cache local de modelos baixados (Hugging Face)
 .cache/
+
+# Node.js (query-endpoint)
+node_modules/
+dist/
