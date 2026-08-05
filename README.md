@@ -57,6 +57,20 @@ Cenário completo em [`exercicio-2-fase-estruturacao.md`](exercicio-2-fase-estru
 
 Temas: MCP, Recorte de Domínio/SDD, AGENTS.md e Skills. Documentos de apoio (Anexo A e B, reaproveitados do Cenário 1) na raiz do repositório.
 
+### Rodando os testes
+| 2.1 — MCP servers | [`dev-ex2.1-mcp-servers.md`](dev-ex2.1-mcp-servers.md) + [`mcp-config/.mcp.json`](mcp-config/.mcp.json) | Mapeamento dos 5 MCP servers do projeto (GitHub, Azure DevOps, Azure AI Search, Azure OpenAI, Confluence), configuração real com permissões least-privilege, e 4 riscos de segurança específicos ao contexto com mitigações. |
+| 2.2 — SDD do query endpoint | [`dev-ex2.2-sdd-query-endpoint.md`](dev-ex2.2-sdd-query-endpoint.md) + [`query-endpoint/`](query-endpoint/) | `tasks.md` com 7 tasks atômicas decompostas do `plan.md`, implementação real da TASK-001 (Azure Function v4 + Zod, 6/6 testes passando), e revisão crítica com 4 pontos de ajuste. |
+| 2.3 — Estratégia de skills | [`dev-ex2.3-skills-strategy.md`](dev-ex2.3-skills-strategy.md) + [`skills/`](skills/) | Árvore de 15 skills (Foundation → Domain → Artifact) com mapeamento de criação/consumo por papel, e o `SKILL.md` completo da skill Foundation mais crítica do projeto (`error-handling`). |
+
+## Cenário-Âncora 3 — papel: Desenvolvedor
+
+Cenário completo em [`cenario-3-exercicios-fase-governanca.md`](cenario-3-exercicios-fase-governanca.md). Temas: Harness Engineering (structured outputs, human-in-the-loop) e Revisão Crítica de Outputs de IA. Documentos de apoio (Anexo A e B, reaproveitados dos cenários anteriores) na raiz do repositório. O código evolui o `query-endpoint/` entregue no Cenário 2.
+Cada Cenário-Âncora é desenvolvido em uma branch própria:
+
+- `cenario-1` — Cenário-Âncora 1: Fase de Entendimento e Contexto (NovaTech).
+- `cenario-2` — Cenário-Âncora 2: Fase de Estruturação do Trabalho (NovaTech).
+- `cenario-3` — Cenário-Âncora 3 (a definir).
+  
 ### Exercícios entregues
 
 | Exercício | Entregável | Resumo |
@@ -64,10 +78,7 @@ Temas: MCP, Recorte de Domínio/SDD, AGENTS.md e Skills. Documentos de apoio (An
 | 3.1 — Structured output e guardrails determinísticos | [`dev-ex3.1-structured-output-harness.md`](dev-ex3.1-structured-output-harness.md) + [`query-endpoint/src/services/response-validator.ts`](query-endpoint/src/services/response-validator.ts) | Schema Zod estrito para o structured output do assistente, 2 guardrails determinísticos (fonte obrigatória com sentinela `NAO_ENCONTRADO`, e bloqueio de resposta que afirme ser possível devolver carga perigosa). Inclui um bug real de regex encontrado e corrigido rodando os testes. |
 | 3.2 — Revisão crítica de código gerado por IA | [`dev-ex3.2-revisao-critica-feedback.md`](dev-ex3.2-revisao-critica-feedback.md) + [`query-endpoint/src/functions/feedback/handler.ts`](query-endpoint/src/functions/feedback/handler.ts) | Duas passadas de revisão crítica do módulo de feedback gerado pelo Copilot (9 problemas encontrados: validação ausente, `console.log`, `require` dinâmico, PII em log, cliente Cosmos recriado por requisição, sem tratamento de erro, contrato de resposta inconsistente) e reescrita completa seguindo o AGENTS.md. |
 
-### Rodando os testes
-| 2.1 — MCP servers | [`dev-ex2.1-mcp-servers.md`](dev-ex2.1-mcp-servers.md) + [`mcp-config/.mcp.json`](mcp-config/.mcp.json) | Mapeamento dos 5 MCP servers do projeto (GitHub, Azure DevOps, Azure AI Search, Azure OpenAI, Confluence), configuração real com permissões least-privilege, e 4 riscos de segurança específicos ao contexto com mitigações. |
-| 2.2 — SDD do query endpoint | [`dev-ex2.2-sdd-query-endpoint.md`](dev-ex2.2-sdd-query-endpoint.md) + [`query-endpoint/`](query-endpoint/) | `tasks.md` com 7 tasks atômicas decompostas do `plan.md`, implementação real da TASK-001 (Azure Function v4 + Zod, 6/6 testes passando), e revisão crítica com 4 pontos de ajuste. |
-| 2.3 — Estratégia de skills | [`dev-ex2.3-skills-strategy.md`](dev-ex2.3-skills-strategy.md) + [`skills/`](skills/) | Árvore de 15 skills (Foundation → Domain → Artifact) com mapeamento de criação/consumo por papel, e o `SKILL.md` completo da skill Foundation mais crítica do projeto (`error-handling`). |
+
 
 ### Rodando o query-endpoint
 
