@@ -1,0 +1,14 @@
+# Artefatos gerados pelo pipeline de RAG (Exercício 1.3) — reproduzíveis via ingest.py
+rag-pipeline/chroma_db/
+rag-pipeline/prompts_output/
+
+# Ambiente virtual Python
+.venv/
+venv/
+
+# Cache de bytecode Python
+__pycache__/
+*.pyc
+
+# Cache local de modelos baixados (Hugging Face)
+.cache/
